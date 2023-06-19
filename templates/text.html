@@ -1,0 +1,131 @@
+{% extends 'layouts/main3.html' %}
+{% load static %}
+
+{% block css2 %}
+
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+
+    
+{% endblock css2 %}
+{% block css %}
+
+<style>
+
+
+  
+</style>
+{% endblock css%}
+
+{% block body %}
+  
+
+  <!-- 
+    - #PRODUCT
+  -->
+
+  <section class="section product">
+  
+
+   
+
+   
+
+      
+<!------------------------------------------------------------------------------------------------------------->
+
+ <!--================Checkout Area =================-->
+ <section class="checkout_area section_gap">
+  <div class="container">
+     
+      
+      <div class="billing_details">
+          <div class="row">
+              <div class="col-lg-8">
+                  <h3>Billing Details</h3>
+                  <form class="row contact_form" action="{% url 'placeorder' %}" method="post" novalidate="novalidate">
+                      {% csrf_token %}
+                      <div class="col-md-12 form-group">
+                          <input type="text" required value="{{ request.user.username }}" class="form-control" name="name" placeholder="Username" >
+                      </div>
+                      <div class="col-md-12 form-group">
+                        <input type="email"  required value="{{ request.user.email }}" class="form-control" name="email" placeholder="enter name"  >
+                    </div>
+                    <div class="col-md-12 form-group">
+                      <input type="tel" required value="{{ userprofile.phone }}" class="form-control" name="phone" placeholder="enter phone" >
+                  </div>
+                  <div class="col-md-12 form-group">
+                    <input type="text" required value="{{ userprofile.country }}"  class="form-control" name="country" placeholder="enter cuntry" 
+                    required > </div>
+                <div class="col-md-12 form-group">
+                  <input type="text"  required value="{{userprofile.city}}"  class="form-control" name="city" placeholder="Enter city" >
+              </div>
+
+              <div class="col-md-12 form-group">
+                <input type="number" required value="{{ userprofile.pincode }}"  class="form-control" name="pincode" placeholder="Enter pincode" >
+            </div>
+
+            <div class="col-md-12 form-group">
+              <input type="text"  required value="{{ userprofile.Address }}"   class="form-control" name="Address" placeholder="Entre address" >
+          </div>
+                    
+                      
+           
+              </div>
+
+
+              <div class="col-lg-4">
+                  <div class="order_box">
+                      <h2>Your Order</h2>
+                      <ul class="list">
+                          <li><a href="#">Product <span>price</span></a></li>
+
+                          {% for  item in  cartitems %}
+                          <img src="{{item.product.product_image.url}}" height="50px" class="me-2" width="50px"><li><a href="#">{{item.product.name}} <span class="middle">x {{item.product_qty}}</span> <span class="last"><td>{{item.product.selling_price }}</td></span></a></li>
+                          {% endfor %}
+                      </ul>
+                      <ul class="list list_2">
+
+                          <li><a href="#">Total <span>Rs {{total_price}} </span></a></li>
+                      </ul>
+                    
+                     
+                 
+                  
+
+                      <input type="hidden" value="COD" name="payment_mode">
+                      <!--<button type="submit" class="primary-btn" style="width: 200px;">cod | placeorder </button>-->
+                      <br>
+                      <button type="button" class="primary-btn pay" style="width: 200px;">Pay with Razorpay </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </form>
+      
+  </div>
+</section>
+<!--================End Checkout Area =================-->
+<!------------------------------------------------------------------------------------------------------------->
+
+
+      
+  </section>
+
+  
+  {% block scripts %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    
+  </script>
+  {% endblock scripts %}
+  {% endblock body %}
+  

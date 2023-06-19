@@ -1,0 +1,140 @@
+{% comment %} {% extends 'layouts/main.html' %} {% endcomment %}
+{% load static %}
+
+{% block css2 %}
+
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link href="{% static 'css/cartstyle.css' %}" rel="stylesheet">
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    
+{% endblock css2 %}
+{% block css %}
+
+<style>
+  
+    .cart-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      
+      .cart-item-image {
+        flex-basis: 30%;
+      }
+      
+      .cart-item-image img {
+        max-width: 100%;
+      }
+      
+      .cart-item-details {
+        flex-basis: 70%;
+        padding-left: 20px;
+      }
+      
+      .cart-item-title {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      
+      .cart-item-price {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      
+      .delete-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .delete-button img {
+        max-width: 20px;
+      }
+      
+
+  
+</style>
+{% endblock css%}
+
+{% block body %}
+  
+
+  <!-- 
+    - #PRODUCT
+  -->
+
+  <section class="section product">
+  
+
+   
+
+   
+
+      
+<!------------------------------------------------------------------------------------------------------------->
+
+<div class="wrapper">
+    <h1>Shopping Cart</h1>
+    <div class="project">
+        <div class="shop">
+          
+          {% if cart %}
+            
+         
+            
+
+
+            
+            {% for item in cart %}
+                
+           
+                
+            <div class="box">
+                <img src="{{item.product.product_image.url}}">
+                <div class="content">
+                    <h3>{{item.product}}</h3>
+                    <h4>Price: ₹ {{item.product.selling_price}}</h4>
+                    <p class="unit"> Quantity: &nbsp; {{item.product_qty}}</p>
+                    <a href="{% url 'delete' item.id %}">  <p class="btn-area"><i aria-hidden="true" class="fa fa-trash"></i> <span class="btn2">Remove</span></p></a>
+                </div>
+            </div>
+         
+
+            {% endfor %}
+
+
+        </div>
+        <div class="right-bar">
+            
+            
+           <a href="{% url 'checkout' %}"><i class="fa fa-shopping-cart"></i>Checkout</a>
+        </div>
+    </div>
+</div> 
+{% else %}
+<h4>NO item in cart</h4>
+
+{% endif %}
+
+  
+<!------------------------------------------------------------------------------------------------------------->
+
+
+      
+  </section>
+
+  
+  {% block scripts %}
+    <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/jquery-3.6.4.min.js' %}"></script>
+  {% endblock scripts %}
+  {% endblock body %}
+  

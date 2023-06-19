@@ -1,0 +1,131 @@
+{% comment %} {% extends 'layouts/main.html' %} {% endcomment %}
+{% load static %}
+
+{% block css2 %}
+
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+
+    
+{% endblock css2 %}
+{% block css %}
+
+<style>
+
+
+  
+</style>
+{% endblock css%}
+
+{% block body %}
+  
+
+  <!-- 
+    - #PRODUCT
+  -->
+
+  <section class="section product">
+  
+
+   
+
+   
+
+      
+<!------------------------------------------------------------------------------------------------------------->
+
+ <!--================Checkout Area =================-->
+ <section class="checkout_area section_gap">
+  <div class="container">
+     
+      
+      <div class="billing_details">
+          <div class="row">
+              <div class="col-lg-8">
+                  <h3>Billing Details</h3>
+                  <form class="row contact_form" action="{% url 'placeorder' %}" method="post" novalidate="novalidate">
+                      {% csrf_token %}
+                      <div class="col-md-12 form-group">
+                        <label for="">Name</label>
+                        <div class="col-md-12 form-group">{{ order.name }}</div>
+                        <label for="">email</label>
+                        <div class="col-md-12 form-group">{{ order.email }}</div>
+                        <label for="">phone</label>
+                        <div class="col-md-12 form-group">{{ order.phone }}</div>
+                        <label for="">Address</label>
+                        <div class="">{{ order.Address }}</div>
+                    
+                      
+           
+              </div>
+
+
+              <div class="col-lg-4">
+                  <div class="order_box">
+                      <h2>Your Order</h2>
+                      <ul class="list">
+                        {% for item in orderitems %}
+              
+          
+              
+                        
+                          
+                          <h5>{{item.product.name}}</h5>
+                          qty:<h5>{{item.quantity}}</h5>
+                          <h5>Rs{{item.price}}</h5>
+                         
+                            <img src="{{item.product.product_image.url}}" height="50px" class="me-2" width="50px">
+                       
+            
+                        
+                      </tr>
+                      {% endfor %}
+                      <ul class="list list_2">
+
+                        <h6>Grand Total</h6>
+          <span class="float-end"><h4>Rs {{order.total_price}} </h4></span>
+         
+      
+          <span>tracking no = daniyajose</span>
+          <br>
+                      </ul>
+                    
+                     
+                 
+                  
+
+                     
+                      <h5 style="color:red;">{{order.status}}</h5>
+                      
+                      <br>
+                      <button type="button" class="primary-btn  style="width: 200px;">{{order.payment_mode}} </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </form>
+      
+  </div>
+</section>
+<!--================End Checkout Area =================-->
+<!------------------------------------------------------------------------------------------------------------->
+
+
+      
+  </section>
+
+  
+  {% block scripts %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  {% endblock scripts %}
+  {% endblock body %}
+  

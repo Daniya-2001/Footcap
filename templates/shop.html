@@ -1,0 +1,88 @@
+{% extends 'layouts/main3.html' %}
+{% load static %}
+{% block body %}
+  
+ 
+
+
+  <!-- 
+    - #PRODUCT
+  -->
+
+  <section class="section product">
+    <div class="container">
+
+      <h2 class="h2 section-title">Latest Collections</h2>
+
+      <ul class="filter-list">
+      </ul>
+
+      <ul class="product-list">
+
+      
+
+      
+
+{% for item in category %}
+  
+
+  
+     
+
+        <li class="product-item">
+          <div class="product-card" tabindex="0">
+
+            <figure class="card-banner">
+              <img src="{{item.image.url}}" width="312" height="350" loading="lazy"
+                alt="Nike Air Max 270 SE" class="image-contain">
+
+              <div class="card-badge">New</div>
+
+             
+            </figure>
+
+            <div class="card-content">
+
+             
+
+              <h3 class="h3 card-title">
+                <a href="{% url 'product' item.slug %}">{{item.category_name}}</a>
+              </h3>
+
+              <data class="card-price" value="{{item.}}"></data>
+
+            </div>
+
+          </div>
+        </li>
+        {% endfor %}
+        <!----------------------------------------------->
+
+<!---------------------------------------->
+       
+
+   </ul>
+
+    </div>
+  </section> 
+  {% comment %} <section class="section product">
+    <div class="container">
+
+      <h2 class="h2 section-title">Woman collection</h2>
+
+      <ul class="filter-list">
+      </ul>
+
+      <ul class="product-list">
+
+      <div class="card" style="width: 18rem;">
+  <img src="{}" class="card-img-top"  width="312" height="350">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> {% endcomment %}
+
+  {% endblock body %}
+  

@@ -1,0 +1,362 @@
+{% extends 'layouts/main5.html' %}
+{% load static %}
+
+{% block css2 %}
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+
+    
+{% endblock css2 %}
+{% block css %}
+
+<style>
+  .card-wrapper{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.img-display{
+    overflow: hidden;
+}
+.img-showcase{
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+.img-showcase img{
+    min-width: 100%;
+}
+.img-select{
+    display: flex;
+}
+.img-item{
+    margin: 0.3rem;
+}
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3){
+    margin-right: 0;
+}
+.img-item:hover{
+    opacity: 0.8;
+}
+.product-content{
+    padding: 2rem 1rem;
+    
+}
+.product-title{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #12263a;
+    margin: 1rem 0;
+}
+.product-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #12263a;
+}
+.product-link{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    background: #256eff;
+    color: #fff;
+    padding: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+.product-link:hover{
+    opacity: 0.9;
+}
+.product-rating{
+    color: #ffc107;
+}
+.product-rating span{
+    font-weight: 600;
+    color: #252525;
+}
+.product-price{
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.product-price span{
+    font-weight: 400;
+}
+.last-price span{
+    color: #f64749;
+    text-decoration: line-through;
+    font-size: 2.5em;
+}
+.new-price span{
+    color: #256eff;
+    font-size: 3.5em;
+}
+.product-detail h2{
+    text-transform: capitalize;
+    color: #12263a;
+    padding-bottom: 0.6rem;
+}
+.product-detail p{
+    font-size: 1.9rem;
+    padding: 1.3rem;
+    opacity: 0.8;
+}
+.product-detail ul{
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+.product-detail ul li{
+    margin: 0;
+    list-style: none;
+    background: url(shoes_images/checked.png) left center no-repeat;
+    background-size: 18px;
+    padding-left: 1.7rem;
+    margin: 0.4rem 0;
+    font-weight: 600;
+    opacity: 0.9;
+}
+.product-detail ul li span{
+    font-weight: 400;
+}
+.purchase-info{
+    margin: 1.5rem 0;
+}
+.purchase-info input,
+.purchase-info .btn{
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+}
+.purchase-info input{
+    width: 60px;
+}
+.purchase-info .btn{
+    cursor: pointer;
+    color: #fff;
+}
+.purchase-info .btn:first-of-type{
+    background: #256eff;
+}
+.purchase-info .btn:last-of-type{
+    background: #f64749;
+}
+.purchase-info .btn:hover{
+    opacity: 0.9;
+}
+.social-links{
+    display: flex;
+    align-items: center;
+}
+.social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #000;
+    border: 1px solid #000;
+    margin: 0 0.2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.5s ease;
+}
+.social-links a:hover{
+    background: #000;
+    border-color: transparent;
+    color: #fff;
+}
+
+@media screen and (min-width: 992px){
+    .card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+    .card-wrapper{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .product-imgs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product-content{
+        padding-top: 0;
+    }
+}
+</style>
+{% endblock css%}
+
+{% block body %}
+  
+
+  <!-- 
+    - #PRODUCT
+  -->
+
+  <section class="section product " >
+  
+
+   
+
+   
+
+      
+<!------------------------------------------------------------------------------------------------------------->
+<div class = "card-wrapper " >
+  {% for item in aswin %}
+  <div class = "card product_data">
+    <!-- card left -->
+  
+    <div class = "product-imgs">
+      <div class = "img-display data ">
+        <div class = "img-showcase ">
+          <img src = "{{item.product_image.url}}" alt = "shoe image">
+          
+         
+        </div>
+      </div>
+      <div class = "img-select">
+       
+       
+        
+      </div>
+    </div>
+    <!-- card right -->
+    <div class = "product-content ">
+      <h2 class = "">{{item.name}}</h2>
+      <br>
+      
+    
+
+      <div class = "product-price">
+        <p class = "last-price">Old Price: <span>₹{{item.orginal_price}}</span></p>
+        <p class = "new-price">New Price: <span>₹{{item.selling_price}}</span></p>
+      </div>
+
+      <div class = "product-detail">
+        <h2>about this item: </h2>
+       
+        <p>{{item.description}}</p>
+      
+      </div>
+
+      <div class = "purchase-info">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+             
+             
+              <div class="input-group">
+                {% csrf_token %}
+                <input type="hidden" value="{{item.id}}" class="prod_id">
+                <div>
+                <span class="input-group-btn" >
+                  <button 
+                  
+                    type="button" 
+                    class="fa fa-minus btn btn-danger btn-number decrement-btn"
+                    data-type="minus"
+                    data-field=""
+                  >
+                    <span class="as"></span>
+                  </button>
+                </span>
+                <input
+                  type="text"
+                  id="quantity"
+                  name="quantity"
+                  class="form-control input-number input-qty"
+                  value="1"
+                  min="1"
+                  max="100"
+                />
+                <span class="as">
+                  <button 
+                    type="button"
+                    class="fa fa-plus btn btn-success btn-number increment-btn"
+                    data-type="plus"
+                    data-field=""
+                  >
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <div class="action">
+          
+          <button type = "button" class = "btn addToCartBtn">
+            Add to Cart <i class = "fas fa-shopping-cart"></i>
+          </button>
+      
+        </div>
+      </div>
+
+      <div class = "social-links">
+        <p>Share At: </p>
+        <a href = "#">
+          <i class = "fab fa-facebook-f"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-twitter"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-instagram"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-whatsapp"></i>
+        </a>
+        <a href = "#">
+          <i class = "fab fa-pinterest"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+<br />
+<br />
+
+
+<!------------------------------------------------------------------------------------------------------------->
+
+
+      
+  </section>
+
+  
+  {% block scripts %}
+    <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static '/js/jquery-3.6.4.min.js' %}"></script>
+  {% endblock scripts %}
+  {% endblock body %}
+  

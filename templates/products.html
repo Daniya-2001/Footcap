@@ -1,0 +1,102 @@
+{% extends 'layouts/main5.html' %}
+{% load static %}
+{% block body %}
+  
+
+  <!-- 
+    - #PRODUCT
+  -->
+
+  <section class="section product">
+    <div class="container">
+
+      <h2 class="h2 section-title">Shop here</h2>
+
+      <ul class="filter-list">
+      </ul>
+
+      <ul class="product-list">
+
+      
+<!------------------------------->
+
+      
+
+{% for item in product %}
+  
+
+  
+     
+
+<li class="product-item">
+  <div class="product-card" tabindex="0">
+
+    <figure class="card-banner">
+      <img src="{{item.product_image.url}}" width="312" height="350" loading="lazy"
+        alt="Nike Air Max 270 SE" class="image-contain">
+
+      <div class="card-badge">New</div>
+
+      <ul class="card-action-list">
+
+        
+
+        
+
+        <li class="card-action-item">
+          <button class="card-action-btn" aria-labelledby="card-label-3">
+           <a href="{% url 'productview' item.category.slug item.slug %}"><ion-icon name="eye-outline"></ion-icon></a> 
+          </button>
+
+          <div class="card-action-tooltip" id="card-label-3">Quick View</div>
+        </li>
+
+
+      </ul>
+    </figure>
+
+    <div class="card-content">
+
+      <h3 class="h3 card-title">
+        <a href="{% url 'productview' item.category.slug item.slug %}">{{item.name}}</a>
+      </h3>
+
+      <data class="card-price" value="120.85">Rs : {{item.selling_price}}</data>
+
+      <ul class="card-action-list">
+
+     
+      </ul>
+
+    </div>
+    <div class="card-content">
+
+      <h3 class="h3 card-title">
+        <a href="{% url 'productview' item.category.slug item.slug %}">{{item.name}}</a>
+      </h3>
+
+      <data class="card-price" value="120.85">Rs : {{item.selling_price}}</data>
+
+      <ul class="card-action-list">
+
+     
+      </ul>
+
+    </div>
+   
+
+  </div>
+</li>
+        {% endfor %}
+        <!----------------------------------------------->
+
+<!---------------------------------------->
+       
+
+      </ul>
+
+    </div>
+  </section>
+
+  {% endblock body %}
+  

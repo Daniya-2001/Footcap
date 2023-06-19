@@ -1,0 +1,48 @@
+{% comment %} {% extends 'layouts/main.html' %} {% endcomment %}
+{% load static %}
+{% block css %}
+
+<link rel="stylesheet" href="{% static '/css/login.css' %}">
+{% endblock css%}
+{% block body %}
+  
+
+  <!-- 
+    - #PRODUCT
+  -->
+
+  <section class="section product">
+  
+
+   
+
+   
+
+      
+<!------------------------------------------------------------------------------------------------------------->
+       
+
+<div class="container1">
+  <form action="" method="POST">
+    {% csrf_token %}
+      <h1 class="h1">Register</h1>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+      <label for="email">Email</label>
+      <input type="text" id="username" name="email" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit" class="btn">Login</button>
+  </form>
+</div>
+
+
+
+<!------------------------------------------------------------------------------------------------------------->
+
+
+      
+  </section>
+
+  {% endblock body %}
+  
